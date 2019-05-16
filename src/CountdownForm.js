@@ -14,7 +14,7 @@ const CountdownTimer = () => {
     <>
       <h1>Create a Countdown</h1>
       <form onSubmit={handleSubmit}>
-        <label>Timer Title</label>
+        <label>Countdown to</label>
         <input onChange={handleChange} />
         <label>Time Till Event</label>
         <input onChange={handleChange} />
