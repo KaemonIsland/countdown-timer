@@ -15,10 +15,12 @@ h1 {
 }
 
 .countdown-wrapper {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .countdown-item {
@@ -32,8 +34,8 @@ h1 {
   margin: 10px;
   padding-top: 10px;
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 
 .countdown-item span {
@@ -47,6 +49,6 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }

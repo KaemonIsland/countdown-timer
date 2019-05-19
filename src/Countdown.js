@@ -19,8 +19,8 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
       const days = then.diff(now, 'days')
       return {
         days,
-        hours: countdown.format('HH') - 6,
         minutes: countdown.format('mm'),
+        hours: countdown.format('HH') - 6,
         seconds: countdown.format('ss')
       }
     })
@@ -48,8 +48,12 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
             />
           ))
         }
-        <button type="reset" onClick={resetCountdown}>New Countdown</button>
       </div>
+      <button
+        type="reset"
+        className="btn btn-outline-primary mt-5 mb-5"
+        onClick={resetCountdown}
+      >New Countdown</button>
     </>
   )
 }

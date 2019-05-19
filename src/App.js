@@ -5,10 +5,10 @@ import { useToggle } from './useToggle';
 import Countdown from './Countdown';
 
 const App = () => {
-  const [form, toggleForm] = useToggle(true)
+  const [form, toggleForm] = useToggle(false)
   const [countdown, setCountdown] = useState({
     countdownTo: 'New Years',
-    timeTill: '01 01 2020, 12:00 pm'
+    timeTill: '01 01 2020, 12:00 am'
   })
 
   const createCountdown = (countdownTo, timeTill) => {
@@ -20,7 +20,7 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className="App container">
       {
         form ?
           <CountdownForm createCountdown={createCountdown} /> : 
@@ -30,9 +30,7 @@ const App = () => {
             toggleForm={toggleForm}
           />
       }
-      <p>Time zone is set to Mountain Standard Time</p>
-      <p>Please only use dates that end in this year.</p>
-      <p>Made by Kaemon Lovendahl</p>
+      <p>Made by Kaemon Lovendahl!</p>
     </div>
   );
 }

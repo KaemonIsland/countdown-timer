@@ -24,13 +24,51 @@ const CountdownTimer = ({ createCountdown }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Countdown to</label>
-      <input name="countdownTo" onChange={handleChange} value={form.countdownTo} />
-      <label>Time Till Event</label>
-      <input name="timeTill" onChange={handleChange} value={form.timeTill} />
-      <button type="submit">Create Countdown</button>
-    </form>
+    <>
+      <h1>Countdown Till...</h1>
+      <form className="pb-5" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Countdown To...</label>
+          <input
+            type="text"
+            className="form-control"
+            id="countdownTo"
+            aria-describedby="countdownToHelp"
+            placeholder="What are we counting down to?"
+            name="countdownTo"
+            onChange={handleChange}
+            value={form.countdownTo} />
+          <small id="countdownToHelp" className="form-text text-muted">
+            Countdown to will look like "Countdown to <strong>Your Text</strong>"
+          </small>
+        </div>
+        
+        <div className="form-group">
+          <label>Time Till Event</label>
+          <input
+            type="text"
+            className="form-control"
+            id="timeTill"
+            aria-describedby="dateFormat"
+            name="timeTill"
+            onChange={handleChange}
+            value={form.timeTill} />
+          <small id="dateFormat" className="form-text text-muted">
+          Dates <strong>must</strong> be in the format of "MM DD YYYY, HH:MM am". i.e. "New Years" would be "01 01 2020, 12:00 am"
+          </small>
+        </div>
+
+        <button
+          className="btn btn-outline-primary"
+          type="submit"
+        >Create Countdown</button>
+      </form>
+
+      <div className="alert alert-warning" role="alert">
+        <p>The time zone is automatically set to Mountain Standard Time</p>
+        <p>Please only use dates that end in this year</p>
+      </div>
+    </>
   )
 }
 

@@ -37,8 +37,8 @@ const Circle = ({radius}) => {
       <path
         fill="none"
         stroke="#333"
-        strokeWidth="4"
-        d={describeArc(50, 50, 48, 0, radius)}
+        strokeWidth="6"
+        d={describeArc(100, 100, 80, 0, radius)}
         />
     </svg>
   )
