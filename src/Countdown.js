@@ -9,7 +9,7 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
   const [intervalId, setIntervalId] = useState(null)
 
   //The date that we are counting down to
-  const then = moment(timeTill, 'MM DD YYYY, h:mm a')
+  const then = moment(`${timeTill}, 12:00 am`, 'YYYY-MM-DD, h:mm a')
   
   let tick = () => {
     setTime(() => {
@@ -20,7 +20,7 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
       return {
         days,
         minutes: countdown.format('mm'),
-        hours: countdown.format('HH') - 6,
+        hours: Number(countdown.format('HH')) + 6,
         seconds: countdown.format('ss')
       }
     })
@@ -32,11 +32,12 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
 
   let resetCountdown = () => {
     clearInterval(intervalId);
+    localStorage.clear('countdownTime')
     toggleForm();
   }
 
   return (
-    <>
+    <div>
       <h1>Countdown to {countdownTo}</h1>
       <div className="countdown-wrapper">
         {
@@ -51,10 +52,10 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
       </div>
       <button
         type="reset"
-        className="btn btn-outline-primary mt-5 mb-5"
+        className="btn btn-primary mt-5 mb-5"
         onClick={resetCountdown}
       >New Countdown</button>
-    </>
+    </div>
   )
 }
 

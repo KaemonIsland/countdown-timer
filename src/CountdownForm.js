@@ -30,6 +30,7 @@ const CountdownTimer = ({ createCountdown }) => {
         <div className="form-group">
           <label>Countdown To...</label>
           <input
+            required
             type="text"
             className="form-control"
             id="countdownTo"
@@ -38,7 +39,7 @@ const CountdownTimer = ({ createCountdown }) => {
             name="countdownTo"
             onChange={handleChange}
             value={form.countdownTo} />
-          <small id="countdownToHelp" className="form-text text-muted">
+          <small id="countdownToHelp" className="form-text">
             Countdown to will look like "Countdown to <strong>Your Text</strong>"
           </small>
         </div>
@@ -46,20 +47,18 @@ const CountdownTimer = ({ createCountdown }) => {
         <div className="form-group">
           <label>Time Till Event</label>
           <input
-            type="text"
+            required
+            type="date"
             className="form-control"
             id="timeTill"
             aria-describedby="dateFormat"
             name="timeTill"
             onChange={handleChange}
             value={form.timeTill} />
-          <small id="dateFormat" className="form-text text-muted">
-          Dates <strong>must</strong> be in the format of "MM DD YYYY, HH:MM am". i.e. "New Years" would be "01 01 2020, 12:00 am"
-          </small>
         </div>
 
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-primary"
           type="submit"
         >Create Countdown</button>
       </form>

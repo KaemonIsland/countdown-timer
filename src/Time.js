@@ -18,8 +18,6 @@ const Time = ({ time, title }) => {
       radius = mapNumber(parseInt(time), 24, 0, 0, 360)
       break
     case 'minutes':
-      radius = mapNumber(parseInt(time), 60, 0, 0, 360)
-      break
     case 'seconds':
       radius = mapNumber(parseInt(time), 60, 0, 0, 360)
       break
