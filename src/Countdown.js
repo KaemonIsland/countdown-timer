@@ -2,20 +2,18 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Time from './Time';
 
-const Countdown = ({name, timeTill}) => {
-  const [time, setTime] = useState({
-    days: undefined,
-    hours: undefined,
-    minutes: undefined,
-    seconds: undefined
-  })
+const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
+
+  const [time, setTime] = useState({})
 
   const [intervalId, setIntervalId] = useState(null)
 
+  //The date that we are counting down to
   const then = moment(timeTill, 'MM DD YYYY, h:mm a')
   
   let tick = () => {
     setTime(() => {
+      //The current Date
       const now = moment()
       const countdown = moment(then - now)
       const days = then.diff(now, 'days')
@@ -30,12 +28,16 @@ const Countdown = ({name, timeTill}) => {
 
   useEffect(() => {
     setIntervalId(setInterval(tick, 1000))
-    return clearInterval(intervalId)
   }, [])
+
+  let resetCountdown = () => {
+    clearInterval(intervalId);
+    toggleForm();
+  }
 
   return (
     <>
-      <h1>Countdown to {name}</h1>
+      <h1>Countdown to {countdownTo}</h1>
       <div className="countdown-wrapper">
         {
           Object.keys(time).map((t, i) => (
@@ -46,6 +48,7 @@ const Countdown = ({name, timeTill}) => {
             />
           ))
         }
+        <button type="reset" onClick={resetCountdown}>New Countdown</button>
       </div>
     </>
   )

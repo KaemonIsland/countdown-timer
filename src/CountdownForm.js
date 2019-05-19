@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const CountdownTimer = () => {
+const CountdownTimer = ({ createCountdown }) => {
+
+  let defaultState = {
+    countdownTo: '',
+    timeTill: ''
+  }
+
+  const [form, setForm] = useState(defaultState)
 
   let handleSubmit = e => {
     e.preventDefault();
+    createCountdown(form.countdownTo, form.timeTill)
+    setForm(defaultState)
   }
 
   let handleChange = e => {
-
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [name]: value
+    })
   }
 
   return (
-    <>
-      <h1>Create a Countdown</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Countdown to</label>
-        <input onChange={handleChange} />
-        <label>Time Till Event</label>
-        <input onChange={handleChange} />
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <label>Countdown to</label>
+      <input name="countdownTo" onChange={handleChange} value={form.countdownTo} />
+      <label>Time Till Event</label>
+      <input name="timeTill" onChange={handleChange} value={form.timeTill} />
+      <button type="submit">Create Countdown</button>
+    </form>
   )
 }
 
