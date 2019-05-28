@@ -62,11 +62,6 @@ const CountdownTimer = ({ createCountdown }) => {
           type="submit"
         >Create Countdown</button>
       </form>
-
-      <div className="alert alert-warning" role="alert">
-        <p>The time zone is automatically set to Mountain Standard Time</p>
-        <p>Please only use dates that end in this year</p>
-      </div>
     </>
   )
 }

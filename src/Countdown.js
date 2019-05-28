@@ -20,7 +20,7 @@ const Countdown = ({ countdownTo, timeTill, toggleForm }) => {
       return {
         days,
         minutes: countdown.format('mm'),
-        hours: Number(countdown.format('HH')) + 6,
+        hours: countdown.format('HH'),
         seconds: countdown.format('ss')
       }
     })

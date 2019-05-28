@@ -25,8 +25,6 @@ const App = () => {
         timeTill: savedTime.timeTill
       })
       toggleForm();
-    } else {
-      console.log('Nothing was found!')
     }
   }, [])
 
