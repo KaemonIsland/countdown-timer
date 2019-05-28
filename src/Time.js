@@ -10,9 +10,21 @@ const Time = ({ time, title }) => {
     )
   }
 
+  //Sets starting days if none is selected
+  const setDays = time => {
+    let storedDay = JSON.parse(localStorage.getItem('startDay'))
+    if (storedDay !== null) {
+      return storedDay.startDay;
+    } else {
+      localStorage.setItem('startDay', JSON.stringify({ startDay: time }))
+      return time;
+    }
+  }
+  
   switch (title) {
     case 'days':
-      radius = mapNumber(parseInt(time), 30, 0, 0, 360)
+      const startDay = setDays(time);
+      radius = mapNumber(parseInt(time), startDay, 0, 0, 360)
       break
     case 'hours':
       radius = mapNumber(parseInt(time), 24, 0, 0, 360)
